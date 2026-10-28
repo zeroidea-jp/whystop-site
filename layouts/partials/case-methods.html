@@ -1,0 +1,25 @@
+{{/* Icons of the service steps that applied to this case (same icon set as the hero tiles).
+     Front matter: methods: ["pin","wifi","clock","split","report","users"] (subset, in that order)
+                   methodsStyle: "titled" (heading + icon + label, default; user decision 2026-10-27) | "labels" | "icons" */}}
+{{- $labels := dict
+  "pin" "現地対応"
+  "wifi" "電波の計測"
+  "clock" "同時計測"
+  "split" "切り分け"
+  "report" "即時解析・報告"
+  "users" "担当者と共同" -}}
+{{- $style := .Params.methodsStyle | default "titled" -}}
+{{- with .Params.methods -}}
+<div class="ws-methods ws-methods--{{ $style }}" aria-label="この事例で実施したこと">
+  {{- if eq $style "titled" }}<p class="ws-methods__title">この事例で実施したこと</p>{{ end -}}
+  <ul class="ws-methods__list">
+    {{- range . -}}
+      {{- $label := index $labels . | default . -}}
+      <li class="ws-methods__item" title="{{ $label }}">
+        <span class="ws-methods__icon">{{ partial "ws-icon.html" . }}</span>
+        {{- if ne $style "icons" }}<span class="ws-methods__label">{{ $label }}</span>{{ end -}}
+      </li>
+    {{- end -}}
+  </ul>
+</div>
+{{- end -}}

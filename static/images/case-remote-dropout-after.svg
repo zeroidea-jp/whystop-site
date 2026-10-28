@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="'Noto Sans CJK JP','Hiragino Sans','Yu Gothic','Meiryo',sans-serif">
+<rect width="640" height="330" rx="16" fill="#f2fbf5"/>
+<text x="14" y="26" font-size="15" font-weight="700" fill="#166534">対策後: 同じ条件で一定時間の再確認 (模式図)</text>
+<text x="14" y="108" font-size="14" font-weight="700" fill="#1e293b">電波</text>
+<text x="14" y="124" font-size="10.5" fill="#64748b">ルーターの信号</text>
+<text x="14" y="184" font-size="14" font-weight="700" fill="#1e293b">通信</text>
+<text x="14" y="200" font-size="10.5" fill="#64748b">操作信号のパケット量</text>
+<text x="14" y="264" font-size="14" font-weight="700" fill="#1e293b">不具合</text>
+<text x="14" y="280" font-size="10.5" fill="#64748b">発生時刻のマーキング</text>
+<text x="14" y="295" font-size="10.5" fill="#64748b">(計測と同じ時計で記録)</text>
+<line x1="118" y1="104" x2="626" y2="104" stroke="#cbd5e1"/>
+<line x1="118" y1="190" x2="626" y2="190" stroke="#cbd5e1"/>
+<line x1="118" y1="268" x2="626" y2="268" stroke="#cbd5e1"/>
+<line x1="123.6" y1="90" x2="123.6" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="138.3" y1="90" x2="138.3" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="153.0" y1="90" x2="153.0" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="167.7" y1="90" x2="167.7" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="182.3" y1="90" x2="182.3" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="197.0" y1="90" x2="197.0" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="211.7" y1="90" x2="211.7" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="226.4" y1="90" x2="226.4" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="241.0" y1="90" x2="241.0" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="255.7" y1="90" x2="255.7" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="270.4" y1="90" x2="270.4" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="285.1" y1="90" x2="285.1" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="299.8" y1="90" x2="299.8" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="314.4" y1="90" x2="314.4" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="329.1" y1="90" x2="329.1" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="343.8" y1="90" x2="343.8" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="358.5" y1="90" x2="358.5" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="373.1" y1="90" x2="373.1" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="387.8" y1="90" x2="387.8" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="402.5" y1="90" x2="402.5" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="417.2" y1="90" x2="417.2" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="431.8" y1="90" x2="431.8" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="446.5" y1="90" x2="446.5" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="461.2" y1="90" x2="461.2" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="475.9" y1="90" x2="475.9" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="490.5" y1="90" x2="490.5" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="505.2" y1="90" x2="505.2" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="519.9" y1="90" x2="519.9" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="534.6" y1="90" x2="534.6" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="549.2" y1="90" x2="549.2" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="563.9" y1="90" x2="563.9" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="578.6" y1="90" x2="578.6" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="593.3" y1="90" x2="593.3" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="607.9" y1="90" x2="607.9" y2="104" stroke="#64748b" stroke-width="2"/>
+<line x1="622.6" y1="90" x2="622.6" y2="104" stroke="#64748b" stroke-width="2"/>
+<polygon points="118,190 118.0,174.0 626.0,174.0 626,190" fill="#bbf7d0" opacity="0.6"/>
+<polyline points="118.0,174.0 626.0,174.0" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="372.0" y="258" font-size="13" font-weight="700" fill="#166534" text-anchor="middle">瞬停なし (一定時間の再確認で消失を確認)</text>
+<text x="120" y="80" font-size="12" fill="#166534">信号は途切れなし</text>
+<text x="120" y="208" font-size="12" fill="#166534">パケットは一定に流れる</text>
+<text x="626.0" y="322" font-size="11" fill="#64748b" text-anchor="end">時刻 →</text>
+</svg>

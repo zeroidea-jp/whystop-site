@@ -1,0 +1,15 @@
+locale = "ja"
+label = "日本語"
+weight = 1
+title = "whystop"
+
+[params]
+  displayName = "JA"
+  isoCode = "ja"
+  rtl = false
+  dateFormat = "2006年1月2日"
+  description = "遠隔操作・自動化の機械に起きる、無線・ネットワーク起因の停止・途切れ・遅延を、電波の実測・ネットワークの挙動・機器のログの時刻合わせで現地で切り分ける出張診断 (zeroidea)"
+  copyright = "© 2026 zeroidea"
+
+[params.author]
+  name = "whystop"

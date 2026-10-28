@@ -1,0 +1,11 @@
+{{/* Sidebar for case pages: all cases in weight order, current one highlighted. */}}
+{{- $cases := where site.RegularPages "Section" "cases" -}}
+{{- $cur := . -}}
+<nav class="ws-case-side__nav" aria-label="事例一覧">
+  <p class="ws-case-side__title">事例一覧</p>
+  <ol>
+    {{ range $cases.ByWeight }}
+      <li{{ if eq .RelPermalink $cur.RelPermalink }} class="is-current" aria-current="page"{{ end }}><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ol>
+</nav>

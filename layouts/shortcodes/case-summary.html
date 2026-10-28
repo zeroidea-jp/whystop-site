@@ -1,0 +1,10 @@
+{{/* Symptom / cause / result table at the top of a case page, from the page's front matter. */}}
+{{- with .Page -}}
+<table class="ws-case-summary">
+  <tbody>
+    <tr><th>症状</th><td>{{ .Params.symptom }}</td></tr>
+    <tr><th>原因 / 切り分け</th><td>{{ .Params.cause }}</td></tr>
+    <tr><th>結果</th><td>{{ .Params.result }}</td></tr>
+  </tbody>
+</table>
+{{- end -}}

@@ -1,0 +1,30 @@
+{{/* whystop: case page = article (left) + sidebar with all cases (right), prev/next by weight. Simplified from Blowfish _default/single.html. */}}
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "single" }}
+  {{- $cases := where site.RegularPages "Section" "cases" -}}
+  {{- $sorted := $cases.ByWeight -}}
+  {{- $prev := "" -}}{{- $next := "" -}}
+  {{- range $i, $p := $sorted -}}
+    {{- if eq $p.RelPermalink $.RelPermalink -}}
+      {{- if gt $i 0 }}{{ $prev = index $sorted (sub $i 1) }}{{ end -}}
+      {{- if lt (add $i 1) (len $sorted) }}{{ $next = index $sorted (add $i 1) }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  <div class="ws-case-layout">
+    <article class="ws-case-main">
+      <header id="single_header" class="mt-5">
+        {{ partial "breadcrumbs.html" . }}
+        <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title | emojify }}</h1>
+        {{ partial "case-methods.html" . }}
+      </header>
+      <section class="mt-6 prose dark:prose-invert ws-case-body">
+        {{ .Content }}
+      </section>
+      <footer class="ws-case-pager print:hidden">
+        {{ with $prev }}<a class="ws-case-pager__link" href="{{ .RelPermalink }}"><span>◀ 前の事例</span>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+        {{ with $next }}<a class="ws-case-pager__link ws-case-pager__link--next" href="{{ .RelPermalink }}"><span>次の事例 ▶</span>{{ .Title }}</a>{{ end }}
+      </footer>
+    </article>
+    <aside class="ws-case-side">{{ partial "cases-sidebar.html" . }}</aside>
+  </div>
+{{ end }}

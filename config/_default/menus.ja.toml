@@ -1,0 +1,31 @@
+# Main menu (header). Anchors are resolved against the site root by layouts/partials/header/basic.html.
+[[main]]
+  name = "こんな症状に"
+  url = "#symptoms"
+  weight = 10
+[[main]]
+  name = "調査の内容"
+  url = "#method"
+  weight = 20
+[[main]]
+  name = "進め方"
+  url = "#flow"
+  weight = 30
+[[main]]
+  name = "料金"
+  url = "#pricing"
+  weight = 40
+[[main]]
+  name = "事例"
+  url = "#cases"
+  weight = 50
+
+# Footer menu
+[[footer]]
+  name = "事例一覧"
+  pageRef = "cases"
+  weight = 10
+[[footer]]
+  name = "運営: zeroidea"
+  url = "https://www.zeroidea.co.jp/"
+  weight = 20
