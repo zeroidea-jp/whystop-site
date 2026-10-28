@@ -2,6 +2,42 @@
 
 /* ---- header ---- */
 .ws-header-spacer { height: 5rem; }
+/* header bar: always distinguishable from the page background (light: white on grey page; dark: darker band) */
+.ws-header-bar { background: rgb(var(--color-neutral)); border-bottom: 1px solid rgb(var(--color-neutral-200)); }
+.dark .ws-header-bar { background: rgb(var(--color-neutral-900)); border-bottom-color: rgb(var(--color-neutral-700)); }
+/* light scheme surfaces (dark is untouched): page = soft grey; grey tiles = symptom/stat cards and case cards;
+   accent tiles = hero tiles and method tiles (same light-blue tone, user decision 2026-10-28) */
+html:not(.dark) { --ws-page-bg: rgb(var(--color-neutral-100)); --ws-tile-bg: rgb(var(--color-neutral-200)); --ws-tile-border: rgb(var(--color-neutral-300)); --ws-accent-tile-bg: rgb(var(--color-primary-100)); --ws-accent-tile-border: rgb(var(--color-primary-200)); }
+html:not(.dark) body { background-color: var(--ws-page-bg); }
+/* swapped 2026-10-29 (user): accent = symptom cards + price cards; grey = hero tiles, method tiles, case cards */
+html:not(.dark) .ws-body .bg-white\/60 { background-color: var(--ws-accent-tile-bg); border-color: var(--ws-accent-tile-border); }
+html:not(.dark) .ws-tile,
+html:not(.dark) .ws-feature-grid--tile .ws-feature,
+html:not(.dark) .ws-case-list__item { background-color: var(--ws-tile-bg); border-color: var(--ws-tile-border); }
+/* icon badges (light): one rule everywhere = solid primary block with a white glyph, the same language as the
+   step-1 circle, the "図解つき" badge and the buttons. Independent of the tile color underneath. */
+html:not(.dark) { --ws-mark-bg: rgb(var(--color-primary-700)); } /* marks one step darker than the buttons (primary-600) */
+html:not(.dark) .ws-tile__icon,
+html:not(.dark) .ws-feature__icon,
+html:not(.dark) .ws-case-list__icon { background-color: var(--ws-mark-bg); color: rgb(var(--color-neutral)); }
+html:not(.dark) .ws-case-list__badge,
+html:not(.dark) .ws-steps > li:first-child > span { background-color: var(--ws-mark-bg); }
+/* blue text accents (headline accent, eyebrow, "詳しく読む", price figures) use the same dark blue as the marks */
+html:not(.dark) .ws-eyebrow,
+html:not(.dark) .ws-h1 .ws-accent,
+html:not(.dark) .ws-case-list__more,
+html:not(.dark) .ws-body .text-primary-600:not(.ws-feature__icon) { color: var(--ws-mark-bg); }
+/* primary buttons: same dark blue, but clearly pressable: slight top-light gradient, inner highlight, soft drop shadow;
+   hover lightens and lifts (lift comes from the theme's hover:-translate-y-0.5) */
+html:not(.dark) a.bg-primary-600 {
+  background-color: rgb(var(--color-primary-700));
+  background-image: linear-gradient(180deg, rgb(var(--color-primary-600)) 0%, rgb(var(--color-primary-700)) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 8px 18px -10px rgba(var(--color-primary-700), 0.7);
+}
+html:not(.dark) a.bg-primary-600:hover {
+  background-image: linear-gradient(180deg, rgb(var(--color-primary-500)) 0%, rgb(var(--color-primary-600)) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 12px 22px -10px rgba(var(--color-primary-700), 0.75);
+}
 .ws-header { display: flex; align-items: center; gap: 1rem; height: 5rem; }
 .ws-brand { display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; }
 .ws-brand__mark { width: 2.5rem; height: 2.5rem; flex: none; }
@@ -33,30 +69,68 @@
 
 /* ---- hero ---- */
 .ws-hero {
-  display: grid; gap: 2.5rem; align-items: center;
+  display: grid; row-gap: 1.5rem; column-gap: 2.5rem; align-items: center;
   padding: 2.5rem 2rem 3rem; margin-top: 0.5rem;
   border-radius: 1.5rem;
   background: none;
 }
+/* wide screens: the headline row spans both columns so the two-line headline stays on two lines */
 @media (min-width: 64rem) {
-  .ws-hero { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); padding: 3rem 2.5rem 3.5rem; }
+  .ws-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); row-gap: 2rem; padding: 3rem 2.5rem 3.5rem; }
+  .ws-hero__head { grid-column: 1 / -1; }
+  .ws-hero__text, .ws-tiles, .ws-hero__figure { align-self: start; }
+  /* tiles on the left, lead + buttons on the right (DOM order stays text -> tiles for narrow screens) */
+  .ws-tiles, .ws-hero__figure { grid-column: 1; grid-row: 2; }
+  .ws-hero__text { grid-column: 2; grid-row: 2; }
+  /* primary CTA at the right end of the button row; DOM keeps it first so it stays on top when stacked */
+  .ws-hero__buttons { flex-direction: row-reverse; justify-content: flex-end; }
 }
+.ws-hero__figure, .ws-tiles { margin-top: 0.5rem; }
+@media (min-width: 64rem) { .ws-hero__figure, .ws-tiles { margin-top: 0; } }
 @media (max-width: 40rem) { .ws-hero { padding: 1.75rem 1.25rem 2.25rem; } }
 .ws-eyebrow { margin: 0 0 1rem; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; color: rgb(var(--color-primary-600)); }
 .ws-h1 { margin: 0; font-size: clamp(1.75rem, 3.6vw, 2.9rem); font-weight: 900; line-height: 1.25; letter-spacing: -0.01em; color: rgb(var(--color-neutral-900)); }
 .ws-h1 .ws-accent { color: rgb(var(--color-primary-600)); }
 @media (max-width: 40rem) { .ws-h1 br { display: none; } }
-.ws-lead { margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.9; color: rgb(var(--color-neutral-600)); }
+.ws-lead { margin-top: 0; font-size: 1.1rem; line-height: 1.9; color: rgb(var(--color-neutral-600)); }
 .ws-lead p { margin: 0; }
 .ws-hero__buttons { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.9rem; }
 .ws-hero__figure { margin: 0; }
 .ws-hero__figure img { width: 100%; height: auto; border-radius: 1rem; box-shadow: 0 24px 48px -24px rgba(15, 76, 129, 0.45); background: #fff; }
 .ws-hero__figure figcaption { margin-top: 0.6rem; font-size: 0.8rem; line-height: 1.6; color: rgb(var(--color-neutral-500)); text-align: center; }
 
+/* ---- feature tiles (Blowfish feature-grid / feature, overridden in layouts/shortcodes) ---- */
+.ws-feature__icon .ws-icon { width: 1.15rem; height: 1.15rem; stroke-width: 2.1; }
+/* "tile" variant (method tiles): same colors as the plain hero tile (.ws-tile), icon and title on one row */
+.ws-feature-grid--tile .ws-feature { background: rgb(var(--color-neutral)); border-color: rgb(var(--color-neutral-200)); }
+.ws-feature-grid--tile .ws-feature__head { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
+.ws-feature-grid--tile .ws-feature__head :is(h2,h3,h4) { font-size: 1rem; line-height: 1.4; }
+.ws-feature-grid--tile .ws-feature__icon { margin-bottom: 0; flex: none; background: rgb(var(--color-primary-100)); color: rgb(var(--color-primary-600)); }
+.ws-feature-grid--tile .ws-feature__icon .ws-icon { width: 1.35rem; height: 1.35rem; stroke-width: 1.9; }
+.dark .ws-feature-grid--tile .ws-feature { background: rgb(var(--color-neutral-800)); border-color: rgb(var(--color-neutral-700)); }
+.dark .ws-feature-grid--tile .ws-feature__icon { background: rgba(var(--color-primary-600), 0.3); color: rgb(var(--color-primary-300)); }
+.dark .ws-feature-grid--tile .ws-feature div.text-sm { color: rgb(var(--color-neutral-300)); }
+/* per-tile tint (feature tint="true"): same colors as the tinted hero tile (.ws-tile--tint) */
+.ws-feature-grid--tile .ws-feature--tint { background: rgb(var(--color-primary-50)); border-color: rgb(var(--color-primary-100)); }
+.ws-feature-grid--tile .ws-feature--tint .ws-feature__icon { background: rgb(var(--color-neutral)); }
+.dark .ws-feature-grid--tile .ws-feature--tint { background: rgba(var(--color-primary-800), 0.45); border-color: rgba(var(--color-primary-600), 0.5); }
+.dark .ws-feature-grid--tile .ws-feature--tint .ws-feature__icon { background: rgba(var(--color-primary-500), 0.35); color: rgb(var(--color-primary-200)); }
+
+/* ---- steps (Blowfish steps/step; steps.html overridden to add .ws-steps) ---- */
+/* step 1 keeps the primary color (where the visitor is now); later steps are subdued */
+/* number badges: same rounded-square block as the icon badges; the 4px ring takes the page color (it only masks the timeline line) */
+.ws-steps > li > span { border-radius: 0.6rem; }
+html:not(.dark) .ws-steps > li > span { --tw-ring-color: var(--ws-page-bg); }
+.ws-steps > li:not(:first-child) > span { background: rgb(var(--color-neutral-300)); color: rgb(var(--color-neutral-700)); }
+.dark .ws-steps > li:not(:first-child) > span { background: rgb(var(--color-neutral-700)); color: rgb(var(--color-neutral-200)); }
+
 /* ---- body ---- */
 .ws-home .ws-body { max-width: none; margin-top: 1rem; }
-.ws-body h2 { margin-top: 3.5rem; scroll-margin-top: 6rem; font-size: 1.8rem; line-height: 1.3; }
-@media (max-width: 40rem) { .ws-body h2 { font-size: 1.5rem; } }
+.ws-body h2 { --ws-h2-pad: 2.75rem; margin-top: 5rem; padding-top: var(--ws-h2-pad); border-top: 1px solid rgb(var(--color-neutral-200)); scroll-margin-top: 6rem; font-size: 1.8rem; line-height: 1.3; }
+/* Blowfish's hover "#" anchor is absolutely positioned at top: 0; move it down by the same padding so it lines up with the text */
+.ws-body h2 > span.absolute { top: var(--ws-h2-pad); }
+.dark .ws-body h2 { border-top-color: rgb(var(--color-neutral-700)); }
+@media (max-width: 40rem) { .ws-body h2 { --ws-h2-pad: 2rem; margin-top: 3.5rem; font-size: 1.5rem; } }
 .ws-body h2 + p { margin-top: 0.5rem; }
 .ws-body [id] { scroll-margin-top: 6rem; }
 

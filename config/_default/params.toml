@@ -7,7 +7,7 @@
 # https://blowfish.page/docs/configuration/#theme-parameters
 
 colorScheme = "ocean"
-defaultAppearance = "dark" # whystop: dark theme (user decision 2026-10-27)
+defaultAppearance = "light" # whystop: light theme (user decision 2026-10-29; dark was the choice on 2026-10-27)
 autoSwitchAppearance = false
 
 # whystop: URL of the Google Form (I003). Must stay above the first [table] so it is a top-level param. Empty = button shows 準備中.
@@ -64,7 +64,7 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   # mobileMenuStyle = "fullscreen" # valid options: fullscreen, dropdown
 
 [footer]
-  showMenu = true
+  showMenu = false # no footer links (2026-10-29)
   showCopyright = true
   showThemeAttribution = false
   showAppearanceSwitcher = false

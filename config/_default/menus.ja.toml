@@ -20,12 +20,4 @@
   url = "#cases"
   weight = 50
 
-# Footer menu
-[[footer]]
-  name = "事例一覧"
-  pageRef = "cases"
-  weight = 10
-[[footer]]
-  name = "運営: zeroidea"
-  url = "https://www.zeroidea.co.jp/"
-  weight = 20
+# Footer menu: none (removed 2026-10-29, user decision). The footer shows only the copyright line.
